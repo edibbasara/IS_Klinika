@@ -1,0 +1,97 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Uredi";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.RezervacijaUrediVM
+
+<br /><br /><br />
+@using (Html.BeginForm("Snimi", "Rezervacija"))
+{
+    @Html.HiddenFor(model => model.ZaposlenikId)
+    @Html.HiddenFor(model => model.DatumPregleda)
+    @Html.HiddenFor(model => model.PacijentId)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.PregledId)
+    <div>
+        <div class="well well-sm"><span class="text-bg text-info">Rezervacija pregleda</span><i class="pull-right text-bg text-info">Pacijent: @Model.pacijentNaziv</i></div>
+        <div class="col-md-6">
+            <div class="well well-sm"><span class="text-bg text-info">Opći podaci pregleda</span></div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Doktor</label>
+                    <input type="text" class="form-control" value="@Model.zaposlenikNaziv" disabled />
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Opis</label>
+                    @Html.TextBoxFor(model => model.Opis, new { @class = "form-control input-sm" })
+                    @Html.ValidationMessage("Opis", new { @class="text-danger"})
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Historija bolesti</label>
+                    @Html.TextAreaFor(model => model.HistorijaBolesti, new { @class = "form-control", @style = "height: 400px" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group-sm ">
+                <div class="input-group-sm">
+                    <label class="checkbox checkbox-inline"><span class="text-bold text-danger">Završen</span></label>
+                    @Html.CheckBoxFor(model => model.Zavrsen, new { @class = "checkbox checkbox-inline" })
+
+                    <label class="checkbox checkbox-inline"><span class="text-bold text-danger">Valid</span></label>
+                    @Html.CheckBoxFor(model => model.Valid, new { @class = "checkbox checkbox-inline" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well well-sm"><span class="text-bg text-info">Slobodni termini na dan: </span></div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Datum pregleda</label>
+                    <input type="text" class="form-control" value="@Model.DatumPregleda" disabled />
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Datum rezervacije</label>
+                    <input type="text" class="form-control" value="@Model.DatumRezervacije" disabled />
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <table class="table table-condensed">
+                        <tr>
+                            <th>ID</th>
+                            <th>Termin</th>
+                        </tr>
+
+                        @foreach (SelectListItem x in Model.terminiList)
+                        {
+                            <tr>
+                                <td>@x.Value</td>
+                                <td>@x.Text</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    Izbor slobodnog termina:
+                    @Html.DropDownListFor(model => model.TerminId, Model.terminiList, new { @class = "form-control input-sm", @style = "display: inline" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <div class="navbar navbar-btn">
+            <input type="submit" value="Rezerviši" class="btn btn-success btn-sm" />
+        </div>
+    </div>
+}
+

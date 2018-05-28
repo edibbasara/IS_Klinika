@@ -1,0 +1,31 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Uredi";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.PregledUrediVM
+
+<br /><br /><br />
+@using (Html.BeginForm("Snimi", "Dijagnoza")) { 
+<div>
+    <div class="well well-sm" >
+        <span class="text-bg text-info" >Pregled</span>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Opis</label>
+                @Html.TextAreaFor(model => model.Opis, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Historija bolesti</label>
+                @Html.TextAreaFor(model => model.HistorijaBolesti, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+</div>
+}

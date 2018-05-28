@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrap.cdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Pixel Admin's stylesheets -->
+    <link href="~/Template/stylesheets/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Template/stylesheets/pixel-admin.css" rel="stylesheet" type="text/css">
+    <link href="~/Template/stylesheets/widgets.css" rel="stylesheet" type="text/css">
+    <link href="~/Template/stylesheets/rtl.css" rel="stylesheet" type="text/css">
+    <link href="~/Template/stylesheets/themes.css" rel="stylesheet" type="text/css">
+</head>
+<body class="theme-white theme-asphalt main-menu-animated">
+    <div id="main-wrapper">
+        @Html.Partial("_TopBar")
+        <div id="main-menu" role="navigation" >
+            <br />
+            <div id="main-menu-inner">
+                <ul class="navigation" >
+                    <li>
+                        @Html.Partial("Uloga_Administrator")
+                    </li>
+                </ul>
+            </div><div class="navbar navbar-fixed-bottom col-lg-2" >
+    <footer>
+        <h6>NMK -&copy; @DateTime.Now.Year - My FIT.ba Apll</h6>
+    </footer>
+</div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myBtn").click(function(){
+                $("#myModal").modal();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#myRst").click(function () {
+                $("#myReset").modal();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#myRac").click(function () {
+                $("#myRacun").modal();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker11').datetimepicker({
+                daysOfWeekDisabled: [0, 6]
+            });
+        });
+    </script>
+</body>
+</html>

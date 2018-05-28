@@ -1,0 +1,45 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Uredi";
+    Layout = null;
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.KorisnikUrediVM
+
+@using (Html.BeginForm("Snimi", "Korisnik")) { 
+@Html.HiddenFor(model=>model.Id)
+<div class="panel panel-default">
+    <span class="text-bg text-info">Uredi Korisnika</span>
+    <div class="panel panel-body" >
+        <div class="form-group">
+            <label>Ime</label>
+            @Html.TextBoxFor(model => model.Ime, new { @class = "form-control" })
+            <label>Prezime</label>
+            @Html.TextBoxFor(model => model.Prezime, new { @class = "form-control" })
+            <label>Korisnićko ime</label>
+            @Html.TextBoxFor(model => model.KorisnickoIme, new { @class = "form-control" })
+            <label>Lozinka</label>
+            @Html.TextBoxFor(model => model.Lozinka, new { @class = "form-control" })
+            <label>Opstina</label>
+            @Html.DropDownListFor(model => model.OpstinaId, Model.OpstineList, new { @class = "form-control" })
+            <label>Adresa</label>
+            @Html.TextBoxFor(model => model.Adresa, new { @class = "form-control" })
+            <label>Email</label>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            <label>Telefon</label>
+            @Html.TextBoxFor(model => model.Tel, new { @class = "form-control" })
+            <label>Mobitel</label>
+            @Html.TextBoxFor(model => model.Mob, new { @class = "form-control" })
+            <label>JMBG</label>
+            @Html.TextBoxFor(model => model.JMBG, new { @class = "form-control" })
+            <label>LK br.</label>
+            @Html.TextBoxFor(model => model.LKbr, new { @class = "form-control" })
+            <label>Datum rođenja</label>
+            @Html.TextBoxFor(model => model.DatumRodjenja, new { @class = "form-control" })
+            <label>
+                <input type="submit" value="Snimi" class="btn btn-success" />
+            </label>
+        </div>
+    </div>
+</div>
+    
+}

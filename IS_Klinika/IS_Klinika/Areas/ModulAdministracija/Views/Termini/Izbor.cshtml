@@ -1,0 +1,27 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Izbor";
+    Layout = null;
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.TerminiIndexVM
+
+<br /><br /><br />
+<div>
+    <table class="table table-condensed">
+        <tr>
+            <th>Smjena</th>
+            <th>Vrjeme termina</th>
+            <th>Izbor</th>
+        </tr>
+        @foreach (TerminiIndexVM.TerminiInfo x in Model.TerminiList)
+        {
+            <tr>
+                <td>@x.SmjenaNaziv</td>
+                <td>@x.Sati : @x.Minuti</td>
+                <td>@x.Valid</td>           
+            </tr>
+        }
+    </table>
+</div>
+
+

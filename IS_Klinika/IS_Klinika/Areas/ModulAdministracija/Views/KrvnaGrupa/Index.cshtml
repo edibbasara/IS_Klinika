@@ -1,0 +1,35 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Krvne grupe";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.KrvnaGrupaIndexVM
+<br /><br /><br />
+<div>
+    <div class="well well-sm" ><span class="text-bg text-info">Krvne grupe</span></div>
+    <div>
+        <table class="table table-striped" >
+            <tr>
+                <th>Naziv</th>
+                <th>RH faktor</th>
+                <th class="text-bg text-danger">Valid</th>
+                <th>
+                    @Html.ActionLink("+", "Dodaj", new { },new { @class="btn btn-success btn-xs"})
+                </th>
+            </tr>
+            @foreach (KrvnaGrupaIndexVM.KrvnaGrupaInfo x in Model.KrvnaLista)
+            {
+                <tr>
+                    <td>@x.Naziv</td>
+                    <td>@x.RHFaktor</td>
+                    <td>@Html.CheckBox("Valid",x.Valid)</td>
+                    <td>
+                        @Html.ActionLink("Uredi", "Uredi", new { krvId = x.Id }, new { @class="btn btn-primary btn-xs"})
+                        @Html.ActionLink("Obriši", "Obrisi", new { krvId = x.Id }, new { @class = "btn btn-danger btn-xs" })
+                     </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div id="UrediKrv" class="col-md-offset-3 col-md-6" ></div>
+

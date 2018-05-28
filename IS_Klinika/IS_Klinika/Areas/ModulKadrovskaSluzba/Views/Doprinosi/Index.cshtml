@@ -1,0 +1,36 @@
+﻿@using IS_Klinika.Areas.ModulKadrovskaSluzba.Models
+@{
+    ViewBag.Title = "Doprinosi - lista";
+}
+@model IS_Klinika.Areas.ModulKadrovskaSluzba.Models.DoprinosiIndexVM
+<br /><br /><br />
+<div class="well well-sm" >
+    <span class="text-bg text-info">Doprinosi</span>
+</div>
+<div>
+    <table class="table table-striped" style="width: 90%">
+        <tr>            
+            <th>Naziv plana</th>
+            <th>Porez na platu</th>
+            <th>Porez na platu osnovica</th>
+            <th class="text-bold text-danger">Valid</th>
+            <th>
+                @Html.ActionLink("+", "Dodaj", new { }, new { @class = "btn btn-success btn-xs" })
+            </th>
+        </tr>
+        @foreach(DoprinosiIndexVM.DoprinosiInfo x in Model.DoprinosiLista)
+        {
+         <tr>
+             <td>@x.NazivPlana</td>
+             <td>@x.PoreznaPlatu</td> 
+             <td>@x.PorezNaPlatuOsnov</td>
+             <td>@Html.CheckBox("Valid",x.Valid)</td>
+             <td>
+                 @Html.ActionLink("Uredi", "Uredi", new { doprinosId = x.Id }, new { @class="btn btn-primary btn-xs"})
+                 @Html.ActionLink("Obriši", "Obrisi", new { doprinosId = x.Id }, new { @class = "btn btn-danger btn-xs" })       
+             </td>
+         </tr>   
+        }
+    </table>
+
+</div>

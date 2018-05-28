@@ -1,0 +1,44 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.RezervacijaIndexVM
+
+<div>
+    <div class="well well-sm" ><span class="text-bg text-info" >Rezervacije</span></div>
+    <div>
+        <table class="table table-striped" style="width:90%" >
+            <tr>
+                <th>Zaposlenik</th>
+                <th>Pacijent</th>
+                <th>Opis</th>
+                <th>Datum pregleda</th>
+                <th>Datum rezevacije</th>
+                <th>Završen</th>
+                <th>Valid</th>
+                <th>
+                      Akcija                
+                </th>
+            </tr>
+            @foreach (RezervacijaIndexVM.RezervacijaInfo x in Model.RezervacijeList)
+            {
+                <tr>
+                    <td>@x.zaposlenikNaziv</td>
+                    <td>@x.pacijentNaziv</td>
+                    <td>@x.Opis</td>
+                    <td>@x.DatumPregleda</td>
+                    <td>@x.DatumRezervacije</td>
+                    <td>@Html.CheckBox("Zavrsen",x.Zavrsen)</td>
+                    <td>@Html.CheckBox("Valid",x.Valid)</td>
+                    <td>
+                        @Html.ActionLink("Uredi", "Uredi", new { rezervacijaId = x.Id }, new { @class = "btn btn-primary btn-xs" })
+                        @Html.ActionLink("Obriši", "Obrisi", new { rezervacijaId = x.Id }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div id="UrediRezervaciju"></div>
+

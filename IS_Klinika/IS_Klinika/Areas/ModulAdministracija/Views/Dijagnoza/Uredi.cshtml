@@ -1,0 +1,52 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Uredi";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.DijagnozaUrediVM
+
+<br /><br /><br />
+@using (Html.BeginForm("Snimi", "Dijagnoza"))
+{
+    @Html.HiddenFor(model=>model.Id)
+    @Html.HiddenFor(model=>model.PregledId)
+    @Html.HiddenFor(model=>model.pacId)
+    <div>
+        <div class="well well-sm">
+            <span class="text-bg text-info">Pregled</span>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Opis</label>
+                    @Html.TextAreaFor(model => model.OpisPregled, new { @class = "form-control" })
+                    @Html.ValidationMessage("OpisPregled", new { @class="text-danger"})
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Historija bolesti</label>
+                    @Html.TextAreaFor(model => model.HistorijBolesti, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div class="well well-sm">
+                <span class="text-bg text-info">Dijagnoza</span>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    @Html.TextAreaFor(model => model.Opis, new { @class = "form-control", @style = "height: 250px" })
+                    @Html.ValidationMessage("Opis", new { @class = "text-danger" })
+                 </div>
+            </div>
+            <hr />
+            <div>
+                <input type="submit"value="Snimi" class="btn btn-success btn-xs" /> 
+            </div>
+        </div>
+    </div>
+}
+

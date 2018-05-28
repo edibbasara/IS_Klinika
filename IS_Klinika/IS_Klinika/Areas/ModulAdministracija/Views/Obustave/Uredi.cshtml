@@ -1,0 +1,73 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Obustave - unos";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.ObustaveUrediVM
+
+@using (Html.BeginForm("Snimi", "Obustave"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ZaposlenikId)
+    <br /><br /><br />
+    <div>
+        <div class="well well-sm">
+            <span class="text-bg text-info">Obustave - unos</span>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Obustava naziv</label>
+                    @Html.DropDownListFor(model => model.VrstaObustaveId, Model.VrsteObustavaList, new { @class = "form-control" })
+                    @Html.ValidationMessage("VrstaObustaveId", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Iznos</label>
+                    @Html.TextBoxFor(model => model.Iznos, new { @class = "form-control" })
+                    @Html.ValidationMessage("Iznos", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Broj rata</label>
+                    @Html.TextBoxFor(model => model.BrojRata, new { @class = "form-control" })
+                    @Html.ValidationMessage("BrojRata", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Iznos rate</label>
+                    @Html.TextBoxFor(model => model.RataIznos, new { @class = "form-control" })
+                    @Html.ValidationMessage("RataIznos", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Datum izdavanja</label>
+                    @Html.TextBoxFor(model => model.DatumIzdavanja, new { @class = "form-control" })
+                    @Html.ValidationMessage("DatumIzdavanja", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Datum prestanka</label>
+                    @Html.TextBoxFor(model => model.DatumPrestanka, new { @class = "form-control" })
+                    @Html.ValidationMessage("DatumPrestanka", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group-sm">
+                <label class="checkbox checkbox-inline"><span class="text-bg text-danger">Valid</span></label>
+                @Html.CheckBoxFor(model => model.Valid, new { @class = "checkbox checkbox-inline" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <input type="submit" value="Snimi" class="btn btn-success btn-xs" />
+    </div>
+
+}

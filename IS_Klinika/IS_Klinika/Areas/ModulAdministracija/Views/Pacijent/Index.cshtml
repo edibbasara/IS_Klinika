@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@using IS_Klinika.Areas.ModulAdministracija.Models;
+@model IS_Klinika.Areas.ModulAdministracija.Models.PacijentIndexVM
+
+<br /><br /><br />
+<div class="well well-sm">
+    <span class="text-bg text-info">Pacijenti</span>
+</div>
+        <div>
+            <table class="table table-striped" style="width:90%">
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Adresa</th>
+                    <th>Opstina prebivalista</th>
+                    <th>Potvrđen</th>
+                    <th>Datum registracije</th>
+                    <th class="text-bold text-danger">Valid</th>
+                    <th>@Html.ActionLink("+", "Dodaj", new { }, new { @class = "btn btn-success btn-xs" })</th>
+                </tr>
+                @foreach (PacijentIndexVM.PacijentInfo x in Model.ListaPacijenata)
+                {
+                    <tr>
+                        <td>@x.Ime</td>
+                        <td>@x.Prezime</td>
+                        <td>@x.Adresa</td>
+                        <td>@x.OpstinaPrebivalistaNaziv</td>
+                        <td>@x.IsPotvrdjen</td>
+                        <td>@x.DatumRegistracije</td> 
+                        <td>@Html.CheckBox("Valid", x.Valid)</td>                      
+                        <td>
+                            @Html.ActionLink(" Karton", "Uredi", new { pacijentId = x.Id }, new { @class = "btn btn-info btn-xs glyphicon glyphicon-folder-open " })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    
+

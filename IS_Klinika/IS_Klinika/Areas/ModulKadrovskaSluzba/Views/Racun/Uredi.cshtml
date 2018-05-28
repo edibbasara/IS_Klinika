@@ -1,0 +1,130 @@
+﻿@using IS_Klinika.Areas.ModulKadrovskaSluzba.Models
+@{
+    ViewBag.Title = "Uredi";
+    //Layout = null;
+}
+@model IS_Klinika.Areas.ModulKadrovskaSluzba.Models.RacunUrediVM
+
+
+    <div style="width: 90%">
+    <div class="well well-sm"><span class="text-bg text-info">Račun</span></div>
+    <div class="col-md-3">
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Broj pregleda</label>
+                @Html.TextBoxFor(model => model.PregledId, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Broj Racuna</label>
+                @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-offset-6 col-md-3">
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Datum</label>
+                @Html.TextBoxFor(model => model.Datum, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <div>
+            <table class="table table-condensed" style="width:90%">
+                <tr>
+                    <th>Proizvod</th>
+                    <th>Popust</th>
+                    <th>Cijena</th>
+                    <th>Kolicina</th>
+                    <th>Iznos bez PDV-a</th>
+                    <th>Iznos popusta</th>
+                    <th>PDV</th>
+                    <th>Iznos ukupno</th>
+                    <th>
+                        <button type="button" class="btn btn-success btn-xs" id="myRac">+</button>
+                     </th>
+                </tr>
+                @foreach (RacunStavkeIndexVM.RacunStavkeInfo x in Model.StavkeList)
+                {
+                    <tr>
+                        <td>@x.ProizvodNaziv</td>
+                        <td>@x.Popust</td>
+                        <td>@x.ProizodCijena</td>
+                        <td>@x.Kolicina</td>
+                        <td>@x.IznosBezPDV</td>
+                        <td>@x.PopustIznos</td>
+                        <td>@x.PDV</td>
+                        <td>@x.IznosSaPDV</td>
+                        <td>
+                            @Html.ActionLink("Uredi", "Uredi", "RacunStavke", new { stavkaId = x.Id, racunId=Model.Id }, new { @class="btn btn-primary btn-xs"})
+                            @Html.ActionLink("Obriši", "Obrisi", "RacunStavke", new { stavkaId = x.Id, racunId = Model.Id }, new { @class = "btn btn-danger btn-xs" })
+                         </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <hr />
+    </div>
+    <div class="col-md-ofset-8 col-md-4">
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Iznos bez PDV-a</label>
+                @Html.TextBoxFor(model => model.IznosBezPDVUkupno, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>PDV</label>
+                @Html.TextBoxFor(model => model.PDVIznosUkupno, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Ukupno</label>
+                @Html.TextBoxFor(model => model.IznosUkupno, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+</div>
+       
+@using (Html.BeginForm("Dodaj", "RacunStavke", new { racunId = Model.Id, stopaId = Model.StopePDVId, proizvodId = Model.ProizvodId, kolicina = Model.Kolicina }))
+{ 
+  <!-- Modal -->
+    <div class="modal fade" id="myRacun" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color:red;"><span class="glyphicon glyphicon-shopping-cart"></span> Dodaj stavku računa</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-wrench"></span> PDV stopa</label>
+                            @Html.DropDownListFor(model => model.StopePDVId, Model.StopePDVList, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-user"></span> Proizvod - usluga</label>
+                            @Html.DropDownListFor(model => model.ProizvodId, Model.ProizvodiList, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-plus-sign"></span> Kolicina</label>
+                            @Html.TextBoxFor(model => model.Kolicina, new { @class = "form-control" })
+                        </div>
+
+                        <input type="submit" class="btn btn-default btn-success btn-block" value="Potvrdi unos" />
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,164 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Uredi";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.ObracunUrediVM
+
+@using (Html.BeginForm("Snimi", "Obracun"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model=>model.ZaposlenikId)
+    @Html.HiddenFor(model=>model.DatumObracuna)
+    <br /><br /><br />
+    <div>
+        <div class="well well-sm">
+            <span class="text-bg text-info">Obračun plate - @Model.ZaposlenikImePrezime</span>
+        </div>
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <span class="text-bg text-info">Opći podaci obračuna</span>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Doprinosi plan</label>
+                    @Html.DropDownListFor(model => model.DoprinosiId, Model.DoprinosiList, new { @class = "form-control" })
+                @Html.ValidationMessage("DoprinosiId", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Mjesec</label>
+                    @Html.DropDownListFor(model => model.Mjesec, Model.MjeseciList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Godina</label>
+                    @Html.DropDownListFor(model => model.Godina, Model.GodineList, new { @class = "form-control" })
+                 </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <span class="text-bg text-info">Period obračuna</span>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Period od</label>
+                    @Html.TextBoxFor(model => model.PeriodOD, new { @class = "form-control" })
+                    @Html.ValidationMessage("PeriodOD", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Period do</label>
+                    @Html.TextBoxFor(model => model.PeriodDO, new { @class = "form-control" })
+                    @Html.ValidationMessage("PeriodDO", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Datum Obračuna</label>
+                    <input type="text" value="@Model.DatumObracuna" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div class="well well-sm">
+                <span class="text-bg text-info">Ostvareni radni sati</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Rad po vremenu</label>
+                    @Html.TextBoxFor(model => model.RPV, new { @class = "form-control" })
+                    @Html.ValidationMessage("RPV", new { @class = "text-danger" })
+                 </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Prekovremeni rad</label>
+                    @Html.TextBoxFor(model => model.PR, new { @class = "form-control" })
+                    @Html.ValidationMessage("PR", new { @class = "text-danger" }) 
+                </div>
+            </div>
+
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Nočni rad</label>
+                    @Html.TextBoxFor(model => model.NR, new { @class = "form-control" })
+                    @Html.ValidationMessage("NR", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Rad nedjeljom</label>
+                    @Html.TextBoxFor(model => model.RN, new { @class = "form-control" })
+                    @Html.ValidationMessage("RN", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Godišnji odmor</label>
+                    @Html.TextBoxFor(model => model.GO, new { @class = "form-control" })
+                    @Html.ValidationMessage("GO", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Bolovanje do 42 dana</label>
+                    @Html.TextBoxFor(model => model.BD42D, new { @class = "form-control" })
+                    @Html.ValidationMessage("BD42D", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Bolovanje preko 42 dana</label>
+                    @Html.TextBoxFor(model => model.BP42D, new { @class = "form-control" })
+                    @Html.ValidationMessage("BP42D", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Državni praznik</label>
+                    @Html.TextBoxFor(model => model.DP, new { @class = "form-control" })
+                    @Html.ValidationMessage("DP", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Norma sati</label>
+                    @Html.TextBoxFor(model => model.NS, new { @class = "form-control" })
+                    @Html.ValidationMessage("NS", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Rad na državni praznik</label>
+                    @Html.TextBoxFor(model => model.RDP, new { @class = "form-control" })
+                    @Html.ValidationMessage("RDP", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label class="checkbox checkbox-inline"><span class="text-bg text-danger">Valid</span></label>
+                    @Html.CheckBoxFor(model => model.Valid, new { @class = "checkbox checkbox-inline" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr />
+            <div>
+                <input type="submit" value="Snimi" class="btn btn-success btn-xs" />
+            </div>
+        </div>
+    </div>
+}

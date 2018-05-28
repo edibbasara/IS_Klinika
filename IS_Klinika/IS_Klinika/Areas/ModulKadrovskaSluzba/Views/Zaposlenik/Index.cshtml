@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Zaposlenici - Lista";
+}
+@using IS_Klinika.Areas.ModulKadrovskaSluzba.Models;
+@model IS_Klinika.Areas.ModulKadrovskaSluzba.Models.ZaposlenikIndexVM
+
+
+<br /><br /><br />
+<div>
+    <div class="well well-sm">
+        <span class="text-bg text-info">Zaposlenici</span>
+    </div>
+    <div>
+        <table class="table table-striped" style="width:90%">
+            <tr>
+                <th>Ime i prezime</th>
+                <th>Opština prebivališta</th>
+                <th>Adresa</th>
+                <th>Radno mjesto</th>
+                <th>Smjena</th>
+                <th>Početak rada</th>
+                <th>Kraj rada</th>
+                <th class="text-bold text-danger" >Valid</th>
+                <th>
+                    @Html.ActionLink("+", "Dodaj", new { }, new { @class = "btn btn-success btn-xs" })
+                </th>
+            </tr>
+            @foreach (ZaposlenikIndexVM.ZaposlenikInfo x in Model.ZaposleniciLista)
+            {
+                <tr>
+                    <td>@x.ImePrezime</td>
+                    <td>@x.OpstinaPrebivalistaNaziv</td>
+                    <td>@x.Adresa</td>
+                    <td>@x.RadnoMjestoNaziv</td>
+                    <td>@x.SmjenaNaziv</td>
+                    <td>@x.PocetakRada</td>
+                    <td>@x.KrajRada</td>
+                    <td>@Html.CheckBox("Valid",x.Valid)</td>
+                    <td>
+                        @Html.ActionLink(" Karton", "Uredi", new { korisnikId = x.Id }, new { @class = "btn btn-info btn-xs glyphicon glyphicon-folder-open" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+
+
+
+

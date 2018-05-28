@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using IS_Klinika.Areas.ModulAdministracija.Models
+@model IS_Klinika.Areas.ModulAdministracija.Models.KorisnikIndexVM
+
+<br /><br /><br />
+    <div class="Panel panel-default">
+        <div class="panel panel-heading">
+            <span class="text-bold text-info">Korisnici</span>
+            <div class="panel panel-body">
+                <table class="table table-condensed" style="width: 95%">
+                    <tr style="color: rgb(193, 181, 181)">
+                        <th style="width: 10%">Ime</th>
+                        <th style="width: 10%">Prezime</th>
+                        <th style="width: 10%">Opstina</th>
+                        <th style="width: 10%">Adresa</th>
+                        <th style="width: 10%">Email</th>
+                        <th style="width: 10%">Telefon</th>
+                        <th style="width: 10%">Mobitel</th>
+                        <th style="width: 10%" class="text-bold text-danger" >Valid</th>
+                        <th>@Ajax.ActionLink("+", "Dodaj", null, new AjaxOptions() { UpdateTargetId = "UrediKorisnik", OnSuccess = "Korisnik je uspjesno dodan" }, new { @class = "btn btn-success btn-xs" })</th>
+                    </tr>
+                    @foreach (KorisnikIndexVM.KorisnikInfo x in Model.ListaKorisnika)
+                    {
+                        <tr>
+                            <td>@x.Ime</td>
+                            <td>@x.Prezime</td>
+                            <td>@x.OpstinaNaziv</td>
+                            <td>@x.Adresa</td>
+                            <td>@x.Email</td>
+                            <td>@x.Tel</td>
+                            <td>@x.Mob</td>
+                            <td>@x.Valid</td>
+                            <td>
+                                @*@Ajax.ActionLink("Uredi", "Uredi", new { Id = x.Id }, new AjaxOptions() { UpdateTargetId = "UrediKorisnik" }, new { @class = "btn btn-primary btn-sm", @style="display: inline" })
+                                @Ajax.ActionLink("Obriši", "Obrisi", new { Id = x.Id }, new AjaxOptions() { UpdateTargetId = "UrediKorisnik", Confirm = "Jeste li sigurni da zelite obrisati ovog korisnika" }, new { @class="btn btn-danger btn-sm", @style="display: inline"})*@
+                               
+                                 @using (Ajax.BeginForm("Uredi","Korisnik",new{Id=x.Id},new AjaxOptions() { UpdateTargetId = "UrediKorisnik" },new {@style="display: inline"}))
+                            {
+                                @Html.Hidden("Id",x.Id)
+                                <input type="submit" value="Uredi" class="btn btn-primary btn-xs" />
+                            }
+                            @using (Ajax.BeginForm("Obrisi", "Korisnik", new { Id=x.Id }, new AjaxOptions() { UpdateTargetId = "UrediKorisnik", Confirm = "Jeste li sigurni za brisanje ovog klijenta" }, new { @style = "display: inline" }))
+                            {
+                                @Html.Hidden("Id", x.Id)
+                                <input type="submit" value="Obriši" class="btn btn-danger btn-xs" /> 
+                            }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+<div id="UrediKorisnik" class="text-bold text-info"></div>

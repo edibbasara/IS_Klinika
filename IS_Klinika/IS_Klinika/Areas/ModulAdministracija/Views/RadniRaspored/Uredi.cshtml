@@ -1,0 +1,54 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Uredi";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.RadniRasporedUrediVM
+
+@using (Html.BeginForm("Snimi", "RadniRaspored")) { 
+  
+<br /><br /><br />
+<div>
+     <div class="col-md-offset-3 col-md-6">
+        <div class="well well-sm" ><span class="text-bg text-info" >Radni raspored unos</span></div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Zaposlenik</label>
+                @Html.DropDownListFor(model => model.ZaposlenikID, Model.ZaposleniciLista, new { @class="form-control"})
+            @Html.ValidationMessage("ZaposlenikId", new { @class="text-danger"})
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Smjena</label>
+                @Html.DropDownListFor(model => model.SmjenaId, Model.SmjenaLista, new { @class = "form-control" })
+            @Html.ValidationMessage("SmjenaId", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Od datuma</label>
+                @Html.TextBoxFor(model => model.DatumOD, new { @class = "form-control" })
+                @Html.ValidationMessage("DatumOD", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Do datuma</label>
+                @Html.TextBoxFor(model => model.DatumDO, new { @class = "form-control" })
+           @Html.ValidationMessage("DatumDO", new { @class = "text-danger" })
+             </div>
+        </div>
+        <br />
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label class="checkbox-inline"><span class="text-bg text-danger" >Valid</span></label>
+                @Html.CheckBoxFor(model => model.Valid, new { @class = "checkbox-inline" })           
+             </div>
+        </div>
+        <hr />
+        <div>
+            <input type="submit" value="Snimi" class="btn btn-success btn-xs" /> 
+        </div>
+    </div>
+</div>
+}

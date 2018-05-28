@@ -1,0 +1,38 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Opstine - lista";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.OpstinaIndexVM
+<br /><br /><br />
+<div class="col-md-12"id="myModal"></div><br />
+<div class="col-md-12">
+    <div class="well well-sm">
+        <span class="text-bg text-info">Općine</span>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>PTT</th>
+                <th>Naziv</th>
+                <th class="text-bold text-danger">Valid</th>
+                <th>
+                    @Html.ActionLink("+","Dodaj", new { }, new{ @class="btn btn-success btn-xs"})
+                   
+                </th>
+            </tr>
+            @foreach (OpstinaIndexVM.OpstinaInfo x in Model.OpstineList)
+            {
+                <tr>
+                    <td>@x.PTT</td>
+                    <td>@x.Naziv</td>
+                    <td>@Html.CheckBox("Valid",x.Valid)</td>
+                    <td>
+                        @Html.ActionLink("Uredi", "Uredi", new {opstinaId=x.Id }, new { @class = "btn btn-primary btn-xs" })
+                        @Html.ActionLink("Obriši", "Obrisi", new { opstinaId = x.Id }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

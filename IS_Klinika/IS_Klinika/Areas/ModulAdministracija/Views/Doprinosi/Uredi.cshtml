@@ -1,0 +1,133 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Doprinosi";
+
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.DoprinosiIndexVM.DoprinosiInfo
+
+@using (Html.BeginForm("Snimi", "Doprinosi"))
+{
+    @Html.HiddenFor(model => model.Id)
+    <br /><br /><br />
+    <div style="width:90%">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <span class="text-bg text-info">Doprinosi unos</span>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Naziv plana</label>
+                    @Html.TextBoxFor(model => model.NazivPlana, new { @class = "form-control" })
+                    @Html.ValidationMessage("NazivPlana", new { @class="text-danger"})
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>PIO na platu</label>
+                    @Html.TextBoxFor(model => model.PIOnaPlatu, new { @class = "form-control" })
+                @Html.ValidationMessage("PIOnaPlatu", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Zdravstvo na platu</label>
+                    @Html.TextBoxFor(model => model.ZdravNaPlatu, new { @class = "form-control" })
+                @Html.ValidationMessage("ZdravNaPlatu", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Nezaposlenost Fed. na platu</label>
+                    @Html.TextBoxFor(model => model.NezapFedNaPlatu, new { @class = "form-control" })
+                 @Html.ValidationMessage("NezapFedNaPlatu", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Nezaposlenost Kan. na platu</label>
+                    @Html.TextBoxFor(model => model.NezapKanNaPlatu, new { @class = "form-control" })
+                @Html.ValidationMessage("NezapKanNaPlatu", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <label>Zdravstvo solidarnost na platu</label>
+                @Html.TextBoxFor(model => model.ZdravSolidNaPlatu, new { @class = "form-control" })
+            @Html.ValidationMessage("ZdravSolidNaPlatu", new { @class = "text-danger" })
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Zaštita od prirodnih nepogoda na platu</label>
+                    @Html.TextBoxFor(model => model.ZastitaOdPrirNepNaPlatu, new { @class = "form-control" })
+                @Html.ValidationMessage("ZastitaOdPrirNepNaPlatu", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label class="checkbox checkbox-inline"><span class="text-bg text-danger">Valid</span></label>
+                    @Html.CheckBoxFor(model => model.Valid, new { @class = "checkbox checkbox-inline" })
+                 </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>PIO iz plate</label>
+                    @Html.TextBoxFor(model => model.PIOizPlate, new { @class = "form-control" })
+                @Html.ValidationMessage("PIOizPlate", new { @class = "text-danger" })                
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Zdravstvo iz plate</label>
+                    @Html.TextBoxFor(model => model.ZdravIzPlate, new { @class = "form-control" })
+               @Html.ValidationMessage("ZdravIzPlate", new { @class = "text-danger" })
+                 </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Nezaposlenost Fed. iz plate</label>
+                    @Html.TextBoxFor(model => model.NezapFedIzPlate, new { @class = "form-control" })
+                @Html.ValidationMessage("NezapFedIzPlate", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Nezaposlenost Kan. iz plate</label>
+                    @Html.TextBoxFor(model => model.NezapKanIzPlate, new { @class = "form-control" })
+                @Html.ValidationMessage("NezapKanIzPlate", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Zdravstvena solidarnost iz plate</label>
+                    @Html.TextBoxFor(model => model.ZdravSolidIzPlate, new { @class = "form-control" })
+                @Html.ValidationMessage("ZdravSolidIzPlate", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Porez na platu osnovica</label>
+                    @Html.TextBoxFor(model => model.PorezNaPlatuOsnov, new { @class = "form-control" })
+                @Html.ValidationMessage("PorezNaPlatuOsnov", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Porez na platu</label>
+                    @Html.TextBoxFor(model => model.PoreznaPlatu, new { @class = "form-control" })
+                @Html.ValidationMessage("PorezNaPlatu", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+            <div class="col-md-12">
+                <hr />
+                <div>
+                    <input type="submit" value="Snimi" class="btn btn-success btn-xs" />
+                </div>
+            </div>        
+    </div>
+}

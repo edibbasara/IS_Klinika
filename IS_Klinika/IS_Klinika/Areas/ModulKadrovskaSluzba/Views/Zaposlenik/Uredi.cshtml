@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "Zaposlenik";
+    //Layout = null;
+}
+@using IS_Klinika.Areas.ModulKadrovskaSluzba.Models
+@model IS_Klinika.Areas.ModulKadrovskaSluzba.Models.ZaposlenikUrediVM
+
+@using (Html.BeginForm("Snimi", "Zaposlenik")){
+    @Html.HiddenFor(model => model.Id)
+ <br /><br /><br />
+    <div>
+        <div>
+            <div class="well well-sm">
+                <span class="text-bg text-info">Karton zaposlenika - @Model.Ime @Model.Prezime </span>
+            </div>
+        </div>
+    <div style="width:90%">
+        <div class="col-md-4 form-group-sm">
+            <div class="well well-sm">
+                <span class="text-bg text-info">Opći podaci</span>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Klinika</label>
+                    @Html.DropDownListFor(model => model.KlinikaId, Model.KlinikaList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Ime</label>
+                    @Html.TextBoxFor(model => model.Ime, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Prezime</label>
+                    @Html.TextBoxFor(model => model.Prezime, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Općina prebivališta</label>
+                    @Html.DropDownListFor(model => model.OpstinaPrebivalistaId, Model.OpstinaList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Adresa</label>
+                    @Html.TextBoxFor(model => model.Adresa, new { @class = "form-control"})
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Općina rođenja</label>
+                    @Html.DropDownListFor(model => model.OpstinaRodzenjaId, Model.OpstinaList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Datum rođenja</label>
+                    @Html.TextBoxFor(model => model.DatumRodjenja, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>JMBG</label>
+                    @Html.TextBoxFor(model => model.JMBG, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>LK br.</label>
+                    @Html.TextBoxFor(model => model.LKbr, new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group-sm">
+    <div class="input-group-sm">
+        <label class="checkbox checkbox-inline"><span class="text-bold text-danger">Valid</span></label>
+        @Html.CheckBoxFor(model => model.Valid, new { @class = "checkbox checkbox-inline" })
+    </div>
+</div>
+        </div>
+        <div class="col-md-4 form-group">
+            <div class="well well-sm">
+                <span class="text-bg text-info">Kontakt podaci</span>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Email</label>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Telefon</label>
+                    @Html.TextBoxFor(model => model.Tel, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Mobitel</label>
+                    @Html.TextBoxFor(model => model.Mob, new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <div class="well well-sm">
+                <span class="text-bg text-info">Banka račun</span>
+            </div>            
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Banka</label>
+                    @Html.TextBoxFor(model => model.Banka, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Konto</label>
+                    @Html.TextBoxFor(model => model.Konto, new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <div class="well well-sm">
+                <span class="text-bg text-info">Podaci PIO</span>
+            </div>            
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>PIO registarski broj</label>
+                    @Html.TextBoxFor(model => model.PIOregBr, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>PIO djelovodni broj</label>
+                    @Html.TextBoxFor(model => model.PIOdjelBr, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 form-group">
+            <div class="well well-sm">
+                <span class="text-bg text-info">Koefcijenti rada</span>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Koefcijent ličnog odbitka</label>
+                    @Html.TextBoxFor(model => model.KoefLO, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Minuli rad</label>
+                    @Html.TextBoxFor(model => model.MinuliRad, new { @class = "form-control" })
+                </div>
+            </div>
+            <br /><br /><br /><br />
+            <div class="well well-sm">
+                <span class="text-bg text-info">Radni raspored</span>
+            </div>       <br />     
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Radno mjesto</label>
+                    @Html.DropDownListFor(model => model.RadnoMjestoId, Model.RadnoMjestoList, new { @class = "form-control" })
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="well well-sm">
+                <span class="text-bg text-info">Status rada</span>
+            </div>            
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Početak rada</label>
+                    @Html.TextBoxFor(model => model.PocetakRada, new { @class = "form-control form-group-sm" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Kraj rada</label>
+                    @Html.TextBoxFor(model => model.KrajRada, new { @class = "form-control" })
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <span class="text-bg text-info">Korisnički podaci</span>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Korisničko ime</label>
+                    @Html.TextBoxFor(model => model.KorisnickoIme, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="input-group-sm">
+                    <label>Lozinka</label>
+                    @Html.PasswordFor(model => model.Lozinka, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-6">
+                <div class="well well-sm">
+                    <span class="text-bg text-info">Korisnička uloga na sistemu</span>
+                </div>
+                <div class="form-group">
+                    <table class="table table-caption">
+                        <tr>
+                            <th>Naziv uloge</th>
+                            <th>Valid</th>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox checkbox-inline">Administrator</label></td>
+                            <td>@Html.CheckBoxFor(model => model.IsAdministrator, new { @class = "checkbox checkbox-inline" })</td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox checkbox-inline">Kadrovsko osoblje</label></td>
+                            <td>@Html.CheckBoxFor(model => model.IsKadrovskoOsoblje, new { @class = "checkbox checkbox-inline" })</td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox checkbox-inline">Doktor</label></td>
+                            <td>@Html.CheckBoxFor(model => model.IsDoktor, new { @class = "checkbox checkbox-inline" })</td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox checkbox-inline">Medicinsko osoblje</label></td>
+                            <td>@Html.CheckBoxFor(model => model.IsMedicinskoOsoblje, new { @class = "checkbox checkbox-inline" })</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="navbar navbar-btn">
+                    <hr />
+                    @Ajax.ActionLink("Obustave", "Index", "Obustave", new { zaposlenikId = Model.Id }, new AjaxOptions() { UpdateTargetId = "UrediZaposlenik" }, new { @class = "btn btn-success btn-xs" })
+                    @Ajax.ActionLink("Obračuni", "Index", "Obracun", new { zaposlenikID = Model.Id },new AjaxOptions(){UpdateTargetId="UrediZaposlenik"}, new { @class = "btn btn-success btn-xs" })
+                    <input type="submit" value="snimi" class="btn btn-success btn-xs pull-right"  />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div id="UrediZaposlenik"></div>

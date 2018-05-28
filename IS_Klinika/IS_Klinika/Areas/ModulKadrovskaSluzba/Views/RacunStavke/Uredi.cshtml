@@ -1,0 +1,38 @@
+﻿@using IS_Klinika.Areas.ModulKadrovskaSluzba.Models
+@{
+    ViewBag.Title = "Uredi";
+}
+@model IS_Klinika.Areas.ModulKadrovskaSluzba.Models.RacunStavkeUrediVM
+
+@using (Html.BeginForm("Snimi","RacunStavke"))
+{ <br /><br /><br />
+    @Html.HiddenFor(model=>model.Id)
+    @Html.HiddenFor(model=>model.RacunId)
+<div>
+    <div class="col-md-offset-3 col-md-6" >
+        <div class="well well-sm" ><span class="text-bg text-info">Račun - stavka</span></div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>PDV</label>
+                @Html.DropDownListFor(model => model.PDVStopeId, Model.PDVStopeList, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Izbor proizvoda</label>
+                @Html.DropDownListFor(model => model.ProizvodId, Model.ProizvodiLista, new { @class="form-control"})
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Količina</label>
+                @Html.TextBoxFor(model => model.Kolicina, new { @class = "form-control" })
+            </div>
+        </div>
+        <hr />
+        <div>
+            <input type="submit" value="Snimi" class="btn btn-success btn-xs" />  
+        </div>
+    </div>
+</div>
+}

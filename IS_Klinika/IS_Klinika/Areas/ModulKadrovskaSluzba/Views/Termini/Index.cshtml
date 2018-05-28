@@ -1,0 +1,38 @@
+﻿@using IS_Klinika.Areas.ModulKadrovskaSluzba.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@model IS_Klinika.Areas.ModulKadrovskaSluzba.Models.TerminiIndexVM
+
+<div>
+    <div class="well well-sm" >
+        <span class="text-bg text-info" >Termini</span>
+    </div>
+    <div>
+        <table class="table table-condensed">
+            <tr>
+                <th>Smjena</th>
+                <th>Vrjeme termina</th>
+                <th>Valid</th>
+                <th>
+                    @Html.ActionLink("+", "Dodaj", new { smjenaId = Model.SmjID }, new { @class = "btn btn-success btn-xs" })
+                </th>
+            </tr>
+            @foreach (TerminiIndexVM.TerminiInfo x in Model.TerminiList)
+            {
+                <tr>
+                    <td>@x.SmjenaNaziv</td>
+                    <td>@x.Sati : @x.Minuti</td>
+                    <td>@x.Valid</td>
+                    <td>
+                        @Html.ActionLink("Uredi", "Uredi", new { terminId = x.Id }, new { @class = "btn btn-primary btn-xs" })
+                        @Html.ActionLink("Obriši", "Obrisi", new { terminId = x.Id },new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

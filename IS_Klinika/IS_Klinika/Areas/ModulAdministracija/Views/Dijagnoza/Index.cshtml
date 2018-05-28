@@ -1,0 +1,23 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Dijagnoza";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.DijagnozaIndexVM
+<div>
+    <table class="table table-info"  >
+        <tr>
+            <th>Pregled ID</th>
+            <th>Opis</th>
+            <th class="text-bold text-danger">Valid</th>
+        </tr>
+        @foreach (DijagnozaIndexVM.DijagnozaIndex x in Model.DijagnozaList)
+        {
+            <tr>
+                <td>@x.PregledId</td>
+                <td>@x.Opis</td>
+                <td>@x.Valid</td>
+            </tr>            
+        }
+    </table>
+</div>
+

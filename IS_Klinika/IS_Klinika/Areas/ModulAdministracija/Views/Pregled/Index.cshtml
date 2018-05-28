@@ -1,0 +1,43 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.PregledIndexVM
+
+<div>
+    <div class="well well-sm" ><span class="text-bg text-info">Pregledi</span></div>
+    <div>
+        <table class="table table-striped" style="width:90%" >
+            <tr>
+                <th>Pregled ID</th>
+                <th>Doktor</th>
+                <th>Pacijent</th>
+                <th>Opis</th>
+                <th>Datum pregleda</th>
+                <th>Završen</th>
+                <th class="text-bold text-danger" >Valid</th>
+                <th>
+                    Akcija
+                </th>
+            </tr>
+            @foreach (PregledIndexVM.PregledInfo x in Model.PregledLista)
+            {
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.zaposlenikNaziv</td>
+                    <td>@x.PacijentNaziv</td>
+                    <td>@x.Opis</td>
+                    <td>@x.datumPregleda</td>
+                    <td>@Html.CheckBox("Završen",x.Zavrsen)</td>
+                    <td>@Html.CheckBox("Valid",x.Valid)</td>
+                    <td>
+                        @Html.ActionLink("Dijagnoza", "Uredi", "Dijagnoza", new { pregledId = x.Id, pacijentId=x.PacijentId }, new { @class="btn btn-info btn-xs"})
+                        @Html.ActionLink("Racun", "Dodaj", "Racun", new { pregledId = x.Id }, new { @class = "btn btn-primary btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div id="PregledInfo"></div>

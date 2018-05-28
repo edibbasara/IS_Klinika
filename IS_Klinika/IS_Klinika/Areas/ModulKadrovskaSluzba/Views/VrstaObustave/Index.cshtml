@@ -1,0 +1,36 @@
+﻿@using IS_Klinika.Areas.ModulKadrovskaSluzba.Models
+@{
+    ViewBag.Title = "Vrste obustava";
+}
+@model IS_Klinika.Areas.ModulKadrovskaSluzba.Models.VrstaObustaveIndexVM
+
+<br /><br /><br />
+<div>
+    <div class="well well-sm"><span class="text-bg text-info" >Vrste obustava</span></div>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Naziv</th>
+                <th>Žiro rč.</th>
+                <th class="text-bg text-danger">Valid</th>
+                <th>
+                    @Html.ActionLink("+", "Dodaj", new { },new { @class="btn btn-success btn-xs"})
+                </th>
+            </tr>
+            @foreach (VrstaObustaveIndexVM.VrstaObustaveInfo x in Model.VrsteObustaveList)
+            {
+                <tr>
+                    <td>@x.Naziv</td>
+                    <td>@x.ZiroRN</td>
+                    <td>@Html.CheckBox("Valid",x.Valid)</td>
+                    <td>
+                        @Html.ActionLink("Uredi", "Uredi", new { vrsteId = x.Id }, new { @class="btn btn-primary btn-xs"})
+                        @Html.ActionLink("Obriši", "Obrisi", new { vrsteId = x.Id },new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>                
+            }
+        </table>
+    </div>
+</div>
+<div id="UrediVrste"></div>
+

@@ -1,0 +1,43 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Index";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.RadnoMjestoIndexVM
+
+<br /><br /><br />
+<div>
+    <div class="well well-sm" >
+        <span class="text-bg text-info" >Radno mjesto</span>
+    </div>
+    <div>
+        <table class="table table-striped" >
+            <tr>
+                <th>Sifra</th>
+                <th>Naziv</th>
+                <th>Opis</th>
+                <th>Koefcijent</th>
+                <th>Osnovica</th>
+                <th class="text-bold text-danger" >Valid</th>
+                <th>
+                    @Html.ActionLink("+", "Dodaj", new { }, new { @class="btn btn-success btn-xs"})
+                </th>
+            </tr>
+            @foreach (RadnoMjestoIndexVM.RadnoMjestoInfo x in Model.RadnaMjestaList)
+            {
+                <tr>
+                    <td>@x.Sifra</td>
+                    <td>@x.Naziv</td>
+                    <td>@x.Opis</td>
+                    <td>@x.Koefcijent</td>
+                    <td>@x.Osnovica</td>
+                    <td>@Html.CheckBox("Valid",x.Valid)</td>
+                    <td>
+                        @Html.ActionLink("Uredi", "Uredi", new { radMjestoId = x.Id },new { @class="btn btn-primary btn-xs"})
+                        @Html.ActionLink("Obriši", "Obrisi", new { radMjestoId = x.Id }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+﻿
+
+<li>
+    <a href="/Home"><i class="menu-icon fa fa-home fa-5x"></i><span class="mm-text text-center-md actions bounceIn">Početna</span></a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Klinika", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-ambulance"></i><span class="mm-text text-center-md actions bounceIn">Klinika</span></a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Zaposlenik", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-user"></i><span class="mm-text text-center-md actions bounceIn">Zaposlenici</span></a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Pacijent", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-users"></i><span class="mm-text text-center-md actions bounceIn">Pacijenti</span></a>
+</li>
+<li>
+         <a data-toggle="collapse" href="#collapse1" class="menu-icon fa fa-gears">&nbsp;&nbsp;&nbsp;Šifrarnik</a>
+    <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">
+            <a href="@Url.Action("Index", "RadnoMjesto", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-globe"></i><span class="mm-text text-center-md actions bounceIn">Radno mjesto</span></a>
+            <a href="@Url.Action("Index", "RadniRaspored", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-globe"></i><span class="mm-text text-center-md actions bounceIn">Radni raspored</span></a>
+            <a href="@Url.Action("Index", "Smjena", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-globe"></i><span class="mm-text text-center-md actions bounceIn">Smjena</span></a>
+            <a href="@Url.Action("Index", "Opstina", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-globe"></i><span class="mm-text text-center-md actions bounceIn">Općine</span></a>
+            <a href="@Url.Action("Index", "Doprinosi", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-euro"></i><span class="mm-text text-center-md actions bounceIn">Doprinosi</span></a>
+            <a href="@Url.Action("Index", "KrvnaGrupa", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-tint"></i><span class="mm-text text-center-md actions bounceIn">Krvna grupa</span></a>
+            <a href="@Url.Action("Index", "Proizvod", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-barcode"></i><span class="mm-text text-center-md actions bounceIn">Proizvodi</span></a>
+            <a href="@Url.Action("Index", "VrstaObustave", new { Area = "ModulAdministracija"})"><i class="menu-icon fa fa-barcode"></i><span class="mm-text text-center-md actions bounceIn">Vrste Obustava</span></a>
+
+
+        </div>
+    </div>
+
+</li>

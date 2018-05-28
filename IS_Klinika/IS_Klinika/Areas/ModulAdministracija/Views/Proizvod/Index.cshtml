@@ -1,0 +1,33 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Index";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.ProizvodIndexVM
+<br /><br /><br />
+<div>
+    <div class="well well-sm" >
+        <span class="text-bold text-info"  >Proizvodi</span>
+    </div>
+    <table class="table table-striped" >
+        <tr>
+            <th>Naziv</th>
+            <th>Cijena</th>
+            <th>Popust</th>
+            <th class ="text-bold text-danger">Valid</th>
+            <th>@Html.ActionLink("+", "Dodaj", new { },new { @class = "btn btn-success btn-xs" })</th>
+        </tr>
+        @foreach (ProizvodIndexVM.ProizvodInfo x in Model.ProizvodiList)
+	{
+		 <tr>
+             <td>@x.Naziv</td>
+             <td>@x.Cijena</td>
+             <td>@x.Popust</td>
+             <td>@Html.CheckBox("Valid",x.Valid)</td>
+             <td>
+                 @Html.ActionLink("Uredi", "Uredi", new { proizvodId = x.Id }, new { @class="btn btn-primary btn-xs"})
+                 @Html.ActionLink("Obriši", "Obrisi", new { proizvodId = x.Id }, new { @class="btn btn-danger btn-xs"})
+             </td>
+         </tr>
+	}
+    </table>
+</div>

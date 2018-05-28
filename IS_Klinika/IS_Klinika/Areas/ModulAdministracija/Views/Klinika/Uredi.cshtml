@@ -1,0 +1,155 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+
+@{
+    ViewBag.Title = "Klinika";
+
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.KlinikaUrediVM
+
+@using (Html.BeginForm("Snimi", "Klinika"))
+{ 
+@Html.HiddenFor(model => model.Id)
+
+    <br /><br /><br />
+<div class="form-group col-lg-6">
+    <div>
+        <div class="well well-sm">
+            <span class="text-bold text-info">Klinika opći podaci</span>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Šifra</label>
+                @Html.TextBoxFor(model => model.Sifra, new { @class = "form-control" })
+                @Html.ValidationMessage("Sifra", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Naziv</label>
+                @Html.TextBoxFor(model => model.Naziv, new { @class = "form-control" })
+                @Html.ValidationMessage("Naziv", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Vrsta</label>
+                @Html.TextBoxFor(model => model.Vrsta, new { @class = "form-control" })
+                @Html.ValidationMessage("Vrsta", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Opstina</label>
+                @Html.DropDownListFor(model => model.OpstinaId, Model.OpstineList, new { @class = "form-control", @style = "display:inline" })
+                @Html.ValidationMessage("OpstinaId", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Adresa</label>
+                @Html.TextBoxFor(model => model.Adresa, new { @class = "form-control" })
+                @Html.ValidationMessage("Adresa", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>ID broj</label>
+                @Html.TextBoxFor(model => model.IdBroj, new { @class = "form-control" })
+                @Html.ValidationMessage("IdBroj", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>PDV broj</label>
+                @Html.TextBoxFor(model => model.PDVbroj, new { @class = "form-control" })
+                @Html.ValidationMessage("PDVbroj", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Zdravstvena institucija broj</label>
+                @Html.TextBoxFor(model => model.ZdravInstitBr, new { @class = "form-control" })
+                @Html.ValidationMessage("ZdravInstitBr", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label class="checkbox checkbox-inline"><span class="text-danger">Valid</span></label>
+                @Html.CheckBoxFor(model => model.Valid, new { @class = "checkbox checkbox-inline" })
+            </div>
+        </div>
+    </div>
+</div>
+   
+<div class="form-group col-lg-6">
+    <div>
+        <div class="well well-sm">
+            <span class="text-bold text-info">Klinika koefcijenti</span>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Rad po vremenu</label>
+                @Html.TextBoxFor(model => model.KoefRPV, new { @class = "form-control" })
+                @Html.ValidationMessage("KoefRPV", new { @class = "text-danger" })
+              </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Prekovremni rad</label>
+                @Html.TextBoxFor(model => model.KoefPR, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Godišnji odmor</label>
+                @Html.TextBoxFor(model => model.KoefGO, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Bolovanje do 42 dana</label>
+                @Html.TextBoxFor(model => model.KoefBD42D, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Bolovanje preko 42 dana</label>
+                @Html.TextBoxFor(model => model.KoefBP42D, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Rad noćni</label>
+                @Html.TextBoxFor(model => model.KoefRN, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Norma sati</label>
+                @Html.TextBoxFor(model => model.KoefNS, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Rad po vremenu</label>
+                @Html.TextBoxFor(model => model.KoefNR, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Rad na drzavni praznik</label>
+                @Html.TextBoxFor(model => model.KoefRDP, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="col-md-12">
+        <hr />
+        <div>
+                
+            <button type="submit" value="Snimi" class="btn btn-success btn-xs">Snimi</button>
+            
+        </div>
+    </div>
+}

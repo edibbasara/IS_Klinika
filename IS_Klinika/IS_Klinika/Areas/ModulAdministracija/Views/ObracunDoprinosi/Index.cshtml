@@ -1,0 +1,79 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.ObracunDoprinosiIndexVM
+
+    <div>
+        <table class="table table-condensed" style="width: 90%" >
+            <tr style="width: 15%">
+                <th>Doprinosi na plače</th>
+                <th>proc %</th>
+                <th>Iznos</th>
+            </tr>
+            <tr style ="width: 1%">
+                <td>Doprinos za PIO/MIO</td>
+                <td>@Html.ValueFor(model => model.koefPIOnaPlatu)</td>
+                <td>@Html.ValueFor(model => model.PIOnaPlatu)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za zdravstvo</td>
+                <td>@Html.ValueFor(model => model.koefZdravNaPlatu)</td>
+                <td>@Html.ValueFor(model => model.ZdravNaPlatu)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za upošljavanje FEDERACIJA</td>
+                <td>@Html.ValueFor(model => model.koefNezapFedNaPlatu)</td>
+                <td>@Html.ValueFor(model => model.NezapFedNaPlatu)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za upošljavanje KANTON</td>
+                <td>@Html.ValueFor(model => model.koefNezapKanNaPlatu)</td>
+                <td>@Html.ValueFor(model => model.NezapKanNaPlatu)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za zdravstvo-solid</td>
+                <td>@Html.ValueFor(model => model.koefZdravSolidNaPlatu)</td>
+                <td>@Html.ValueFor(model => model.ZdravSolidNaPlatu)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Pos.naknada za zas.od prir.nep.</td>
+                <td>@Html.ValueFor(model => model.koefZastitaOdPrirNepNaPlatu)</td>
+                <td>@Html.ValueFor(model => model.ZastitaOdPrirNepNaPlatu)</td>
+            </tr>
+        </table>
+        <table class="table table-condensed" style="width: 90%">
+            <tr style="width: 15%">
+                <th>Doprinosi iz plače</th>
+                <th>proc %</th>
+                <th>Iznos</th>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za PIO/MIO</td>
+                <td>@Html.ValueFor(model => model.koefPIOizPlate)</td>
+                <td>@Html.ValueFor(model => model.PIOizPlate)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za zdravstvo</td>
+                <td>@Html.ValueFor(model => model.koefZdravIzPlate)</td>
+                <td>@Html.ValueFor(model => model.ZdravIzPlate)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za upošljavanje FEDERACIJA</td>
+                <td>@Html.ValueFor(model => model.koefNezapFedIzPlate)</td>
+                <td>@Html.ValueFor(model => model.NezapFedIzPlate)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za upošljavanje KANTON</td>
+                <td>@Html.ValueFor(model => model.koefNezapKanIzPlate)</td>
+                <td>@Html.ValueFor(model => model.NezapKanIzPlate)</td>
+            </tr>
+            <tr style="width: 1%">
+                <td>Doprinos za zdravstvo-solid</td>
+                <td>@Html.ValueFor(model => model.koefZdravSolidIzPlate)</td>
+                <td>@Html.ValueFor(model => model.ZdravSolidIzPlate)</td>
+            </tr>
+        </table>
+   </div>
+

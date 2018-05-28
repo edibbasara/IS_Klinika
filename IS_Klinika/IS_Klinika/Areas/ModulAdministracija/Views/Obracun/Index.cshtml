@@ -1,0 +1,50 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.ObracunIndexVM
+
+<br /><br /><br />
+
+<div >
+    <div>
+        <table class="table table-striped" style="width:90%">
+            <tr>
+                <th>Ime i prezime</th>
+                <th>Mjesec</th>
+                <th>Godina</th>
+                <th>Doprinosi plan</th>
+                <th>Period od</th>
+                <th>Period do</th>
+                <th>Datum obračuna</th>
+                <th class="text-bold text-danger">Valid</th>
+                <th>
+                    @Html.ActionLink("+", "Dodaj", new { zaposlenikId = Model.ZapId }, new { @class = "btn btn-success btn-xs" })
+                </th>
+            </tr>
+            @foreach (ObracunIndexVM.ObracunInfo x in Model.ObracunList)
+            {
+                <tr>
+                    <td>@x.ZaposlenikIme</td>
+                    <td>@x.Mjesec</td>
+                    <td>@x.Godina</td>
+                    <td>@x.DoprinosiNaziv</td>
+                    <td>@x.PeriodOD</td>
+                    <td>@x.PeriodDO</td>
+                    <td>@x.DatumObracuna</td>                    
+                    <td>@Html.CheckBox("Valid", x.Valid)</td>
+                    <td>
+                        @Html.ActionLink("Uredi", "Uredi", new { obracunId = x.Id }, new { @class = "btn btn-primary btn-xs" })
+                        @Ajax.ActionLink("Info", "Index", "ObracunDoprinosi", new { obracunId = x.Id }, new AjaxOptions() { UpdateTargetId = "Doprinosi" }, new { @class = "btn btn-info btn-xs" })
+                        @Html.ActionLink("Obriši", "Obrisi", new { obracunId = x.Id }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div id="Doprinosi"></div>
+
+
+

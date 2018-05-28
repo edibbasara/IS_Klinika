@@ -1,0 +1,241 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Uredi";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.PacijentUrediVM
+
+@using (Html.BeginForm("Snimi", "Pacijent"))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <br /><br /><br />
+<div style="width: 90%">
+    <div class="well well-sm">
+        <span class="text-bg text-info">Pacijent - @Model.Ime @Model.Prezime</span>
+    </div>
+    <div class="col-md-4">
+        <div class="well well-sm">
+            <span class="text-bg text-info">Opći podaci</span>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Klinika</label>
+                @Html.DropDownListFor(model => model.KlinikaId, Model.KlinikeList, new { @class = "form-control" })
+               @Html.ValidationMessage("KlinikaId", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Ime</label>
+                @Html.TextBoxFor(model => model.Ime, new { @class = "form-control" })
+                @Html.ValidationMessage("Ime", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Prezime</label>
+                @Html.TextBoxFor(model => model.Prezime, new { @class = "form-control" })
+                @Html.ValidationMessage("Prezime", new { @class="text-danger"})
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Opština prbivalista</label>
+                @Html.DropDownListFor(model => model.OpstinaPrebivalistaId, Model.OpstineList, new { @class = "form-control" })
+             @Html.ValidationMessage("OpstinaPrebivalistaId", new { @class = "text-danger" })
+             </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Adresa</label>
+                @Html.TextBoxFor(model => model.Adresa, new { @class = "form-control" })
+                @Html.ValidationMessage("Adresa", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="well well-sm">
+            <span class="text-bg text-info">Kontakt podaci</span>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Email</label>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+               @Html.ValidationMessage("Email", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Telefon</label>
+                @Html.TextBoxFor(model => model.Tel, new { @class = "form-control" })
+                @Html.ValidationMessage("Tel", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Mobitel</label>
+                @Html.TextBoxFor(model => model.Mob, new { @class = "form-control" })
+               @Html.ValidationMessage("Mob", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Opština rođenja</label>
+                @Html.DropDownListFor(model => model.OpstinaRodzenjaId, Model.OpstineList, new { @class = "form-control" })
+            @Html.ValidationMessage("OpstinaRodzenjaId", new { @class = "text-danger" })
+            </div>
+        </div>       
+            
+            <div class="form-group-sm">
+                <div class="input input-group-sm">
+                    <label>Datum rođenja</label>
+                        @Html.TextBoxFor(model => model.DatumRodjenja, new { @class = "form-control" })
+                        @Html.ValidationMessage("DatumRodjenja", new { @class = "text-danger" })                                    
+                  </div>
+            </div>
+
+        </div>
+
+    <div class="col-md-4">
+        <div class="well well-sm">
+            <span class="text-bg text-info">Korisnički podaci</span>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Korisnicko ime</label>
+                @Html.TextBoxFor(model => model.KorisnickoIme, new { @class = "form-control" })
+                @Html.ValidationMessage("KorisnickoIme", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Lozinka</label>
+                @Html.PasswordFor(model => model.Lozinka, new { @class = "form-control" })
+                @Html.ValidationMessage("Lozinka", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Krvna grupa</label>
+                @Html.DropDownListFor(model => model.KrvnaGrupaId, Model.KrvnaGrupaLista, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group-sm">
+            <label class="checkbox checkbox-inline"><span class="text-bold text-danger">Potvrđen</span></label>
+            @Html.CheckBoxFor(model => model.IsPotvrdjen, new { @class = "checked checkbox-inline " })
+            <label class="checkbox checkbox-inline"><span class="text-bold text-danger">Valid</span></label>
+            @Html.CheckBoxFor(model => model.Valid, new { @class = " checked checkbox-inline" })
+        </div>
+        <br />
+        <div class="form-group-sm">
+            <div class="input input-group-sm">
+                <label>Datum registracije</label>
+                <input type="date" value="@Model.DatumRegistracije" disabled class="form-control" />
+            </div>
+        </div>
+        <br />
+    </div>
+    <div>
+        @if (Model.Id != 0) { 
+        <button type="button" class="btn btn-success btn-sm" id="myRst">Reset password</button>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-success btn-sm" id="myBtn">Rezervacija pregleda</button>
+        }
+        <input type="submit" value="Snimi" class="btn btn-success btn-sm pull-right" />
+    </div>
+
+    <div class="col-md-12">
+        <hr />
+        @if (Model.Id != 0) {
+        <div class="navbar navbar-btn">
+
+            @Ajax.ActionLink("Osiguranje", "Index", "Osiguranje", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "PacijentPodaci" }, new { @class = "btn btn-success btn-sm" })
+            @Ajax.ActionLink("Rezervisani pregledi", "Index", "Rezervacija", new { pacijentId = Model.Id }, new AjaxOptions { UpdateTargetId = "PacijentPodaci" }, new { @class = "btn btn-success btn-sm" })
+            @Ajax.ActionLink("Završeni pregledi","Index","Pregled", new { pacijentId = Model.Id }, new AjaxOptions { UpdateTargetId = "PacijentPodaci" }, new { @class = "btn btn-success btn-sm" })
+           
+            
+          
+               </div> 
+        }
+        <div id="PacijentPodaci"></div>
+    </div>
+</div>
+}
+
+<!-- Modal poziv za registraciju termina-->
+@using (Html.BeginForm("Dodaj", "Rezervacija", new { pacijentId = Model.Id }))
+{
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color:red;"><span class="glyphicon glyphicon-search"></span> Izbor doktora i datuma pregleda</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-user"></span> Doktor</label>
+                            @Html.DropDownListFor(model => model.zaposlenikId, Model.ZaposleniciList, new { @class = "form-control" })
+                            @Html.ValidationMessage("Id", new { @class = "text-danger" })
+                         </div>
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-calendar"></span> Datum pregleda</label>
+                            @Html.TextBoxFor(model => model.DatumPregleda, new { @class = "form-control" })
+                            @Html.ValidationMessage("DatumPregleda", new { @class = "text-danger" })
+                        </div>
+
+                        <input type="submit" class="btn btn-default btn-success btn-block" value="Izaberi slobodan termin" />
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Modal poziv za promjenu pasworda -->
+@using (Html.BeginForm())
+{
+    <div class="modal fade" id="myReset" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Izmjena passworda</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-user"></span> Stari password</label>
+                            @Html.PasswordFor(model => model.Lozinka, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-user"></span> Novi password</label>
+                            @Html.PasswordFor(model => model.Lozinka, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label><span class="glyphicon glyphicon-user"></span> Potvrda passworda</label>
+                            @Html.PasswordFor(model => model.Lozinka, new { @class = "form-control" })
+                        </div>
+                        <input type="submit" class="btn btn-default btn-success btn-block" value="Reset password" />
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,53 @@
+﻿@using IS_Klinika.Areas.ModulAdministracija.Models
+@{
+    ViewBag.Title = "Index";
+}
+@model IS_Klinika.Areas.ModulAdministracija.Models.RacunIndexVM
+
+<div>
+    <div class="well well-sm" >
+        <span class="text-bg text-info" >Račun</span>
+    </div>
+    <div class="col-md-4 "  >
+    <div class="form-group-sm">
+        <div class="input-group-sm">
+            <label>Broj racuna</label>
+            @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+        </div>
+    </div>
+        <div class="form-group-sm">
+            <div class="form-group-sm">
+                <label>Pregled broj</label>
+                @Html.TextBoxFor(model => model.PregledId, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+   <div class="col-md-12">
+       <div id="Stavke"></div>
+       <hr />
+       <div>
+           @Ajax.ActionLink("Dodaj", "Dodaj", "RacunStavke", new { racunId = Model.Id, pregledId=Model.PregledId }, new AjaxOptions() { UpdateTargetId = "Stavke" }, new { @class = "btn btn-success btn-xs" })
+       </div>
+   </div>
+    <div class="col-md-offset-8 col-md-4">
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Iznos bez PDV-a</label>
+                @Html.TextBoxFor(model => model.IznosBezPDVUkupno, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>PDV</label>
+                @Html.TextBoxFor(model => model.PDVIznosUkupno, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group-sm">
+            <div class="input-group-sm">
+                <label>Iznos ukupno</label>
+                @Html.TextBoxFor(model => model.IznosUkupno, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+</div>
+
